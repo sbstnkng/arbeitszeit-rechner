@@ -24,7 +24,7 @@
   "homepage": "https://s3koenig.github.io/arbeitszeit-rechner/",
   "scripts": {
     "precommit": "lint-staged",
-    "predeploy": "yarn run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
