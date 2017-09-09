@@ -1,5 +1,6 @@
-[![Build Status](https://travis-ci.org/s3koenig/arbeitszeit-rechner.svg)](https://travis-ci.org/s3koenig/arbeitszeit-rechner)
+[![Travis](https://img.shields.io/travis/s3koenig/arbeitszeit-rechner.svg)]()
 [![license](https://img.shields.io/github/license/s3koenig/arbeitszeit-rechner.svg)]()
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
