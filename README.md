@@ -96,7 +96,7 @@ See the section about [deployment](#deployment) for more information.
 
 ## Github Pages
 
-Every push to the `master` branch deploys the app automatically to its own (Github Page)[https://s3koenig.github.io/arbeitszeit-rechner/].
+Every push to the `master` branch deploys the app automatically to its own [Github Page](https://s3koenig.github.io/arbeitszeit-rechner/).
 
 The deploy is configured in the `.travis.yml` file.
 
