@@ -13,6 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [npm run start:docker](#npm-run-startdocker)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
+- [Github Pages](#github-pages)
 - [Docker](#docker)
   - [Building your image](#building-your-image)
   - [Run the image](#run-the-image)
@@ -91,6 +92,12 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
+
+## Github Pages
+
+Every push to the `master` branch deploys the app automatically to its own (Github Page)[https://s3koenig.github.io/arbeitszeit-rechner/].
+
+The deploy is configured in the `.travis.yml` file.
 
 ## Docker
 
