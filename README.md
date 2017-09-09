@@ -13,7 +13,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [npm run start:docker](#npm-run-startdocker)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
-- [Continuous Integration](#continuous-integration)
 - [Docker](#docker)
   - [Building your image](#building-your-image)
   - [Run the image](#run-the-image)
