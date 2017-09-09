@@ -1,4 +1,4 @@
-[![Travis](https://img.shields.io/travis/s3koenig/arbeitszeit-rechner.svg)]()
+[![Build Status](https://travis-ci.org/s3koenig/arbeitszeit-rechner.svg?branch=master)](https://travis-ci.org/s3koenig/arbeitszeit-rechner)
 [![license](https://img.shields.io/github/license/s3koenig/arbeitszeit-rechner.svg)]()
 
 Try the [demo](https://s3koenig.github.io/arbeitszeit-rechner/).
