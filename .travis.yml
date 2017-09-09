@@ -1,8 +1,9 @@
 language: node_js
 node_js:
- - "stable"
-before_install:
- - npm i -g yarn
- - yarn install
+  - 6
+cache:
+  directories:
+    - node_modules
 script:
- - yarn run test
+  - npm test
+  - npm run build
