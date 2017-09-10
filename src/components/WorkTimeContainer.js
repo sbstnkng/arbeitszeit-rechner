@@ -22,7 +22,7 @@ class WorkTimeContainer extends Component {
             label="Kommen"
             handleOnChange={this.handleOnChangeKommen}
           />
-          <TimePickerField label="Gehen" />
+          <TimePickerField label="Gehen" disabled={true} />
         </ContentCard>
       </div>
     );
