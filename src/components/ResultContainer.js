@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import ContentCard from './ContentCard';
+import TimeResult from './TimeResult';
+import {
+  calculateMinWorkTime,
+  calculateMaxWorkTime
+} from '../services/calculationService';
 
 class ResultContainer extends Component {
-  render() {
+  render(props) {
+    const startTime = this.props.time.arrival;
+
     return (
       <div>
-        <ContentCard title="Ergebnis">
-          7,6h erreicht um 16:30 Uhr <br />
-          10h erreicht um 19:00 Uhr <br />
-          Aktuelle Arbeitszeit: 8,5h (1,1h Überstunden)
+        <ContentCard title="Basiswerte">
+          <TimeResult label={'7,6h'} value={calculateMinWorkTime(startTime)} />
+          <TimeResult label={'10h'} value={calculateMaxWorkTime(startTime)} />
         </ContentCard>
       </div>
     );

@@ -14,8 +14,15 @@ class App extends Component {
       meta: {
         name: 'Arbeitszeit Rechner'
       },
-      data: {}
+      time: {
+        arrival: null
+      }
     };
+    this.updateTime = this.updateTime.bind(this);
+  }
+
+  updateTime(time) {
+    this.setState({ time });
   }
 
   render() {
@@ -23,9 +30,9 @@ class App extends Component {
       <div className="App">
         <Title title={this.state.meta.name} />
         <StyledContentWrapper>
-          <WorkTimeContainer />
+          <WorkTimeContainer update={this.updateTime} />
           <BreakTimeContainer />
-          <ResultContainer data={this.state.data} />
+          <ResultContainer time={this.state.time} />
         </StyledContentWrapper>
       </div>
     );
