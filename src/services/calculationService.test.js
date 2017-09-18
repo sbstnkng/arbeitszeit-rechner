@@ -1,6 +1,7 @@
 import moment from 'moment';
 import {
   isDateValid,
+  calculateWorkTime,
   calculateMinWorkTime,
   calculateMaxWorkTime
 } from './calculationService';
@@ -34,6 +35,26 @@ describe('isDateValid', () => {
   test('with valid date string', () => {
     const result = isDateValid('2017-09-10');
     expect(result).toBeTruthy();
+  });
+});
+
+describe('calculateWorkTime', () => {
+  test('with date null', () => {
+    const result = calculateWorkTime(null, null, null);
+    expect(result).toBeNull();
+  });
+
+  test('with date undefined', () => {
+    const result = calculateWorkTime(undefined, undefined, undefined);
+    expect(result).toBeNull();
+  });
+
+  test('with date', () => {
+    const startTime = new Date('2017-09-18T08:30:00');
+    const expectedTime = new Date('2017-09-18T16:40:00');
+
+    const result = calculateWorkTime(startTime, 8, 10);
+    expect(result.toISOString()).toBe(expectedTime.toISOString());
   });
 });
 
