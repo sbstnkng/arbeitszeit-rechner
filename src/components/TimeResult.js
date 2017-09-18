@@ -11,6 +11,7 @@ class TimeResult extends Component {
           format="24hr"
           disabled={true}
           value={this.props.value}
+          textFieldStyle={this.props.textFieldStyle}
         />
       </div>
     );
