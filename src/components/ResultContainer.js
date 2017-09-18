@@ -12,7 +12,7 @@ class ResultContainer extends Component {
 
     return (
       <div>
-        <ContentCard title="Sollwerte">
+        <ContentCard title="Ergebnis">
           <TimeResult label={'7,6h'} value={calculateMinWorkTime(startTime)} />
           <TimeResult label={'10h'} value={calculateMaxWorkTime(startTime)} />
         </ContentCard>
