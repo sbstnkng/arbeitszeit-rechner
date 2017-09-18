@@ -15,7 +15,7 @@ class App extends Component {
         name: 'Arbeitszeit Rechner'
       },
       time: {
-        arrival: null
+        start: null
       }
     };
     this.updateTime = this.updateTime.bind(this);

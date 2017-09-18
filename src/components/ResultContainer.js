@@ -18,7 +18,7 @@ const textFieldStyle = {
 
 class ResultContainer extends Component {
   render(props) {
-    const startTime = this.props.time.arrival;
+    const startTime = this.props.time.start;
 
     return (
       <div>

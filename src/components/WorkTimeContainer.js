@@ -10,7 +10,7 @@ class WorkTimeContainer extends Component {
   }
 
   handleOnChangeKommen(event, date) {
-    const time = { arrival: date };
+    const time = { start: date };
     this.props.update(time);
   }
 
