@@ -76,16 +76,16 @@ describe('formatTime', () => {
   });
 
   test('with date before 12:00', () => {
-    const date = new Date('2017-09-18T08:35:00+02:00');
+    const date = new Date('2017-09-18T08:35:00');
 
     const result = formatTime(date);
-    expect(result).toBe('08:35');
+    expect(result).toBe(date.getHours() + ':' + date.getMinutes());
   });
 
   test('with date after 12:00', () => {
-    const date = new Date('2017-09-18T13:35:00+02:00');
+    const date = new Date('2017-09-18T13:35:00');
 
     const result = formatTime(date);
-    expect(result).toBe('13:35');
+    expect(result).toBe(date.getHours() + ':' + date.getMinutes());
   });
 });
