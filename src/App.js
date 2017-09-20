@@ -15,14 +15,22 @@ class App extends Component {
         name: 'Arbeitszeit Rechner'
       },
       time: {
-        start: null
+        start: null,
+        end: null
       }
     };
     this.updateTime = this.updateTime.bind(this);
   }
 
-  updateTime(time) {
-    this.setState({ time });
+  updateTime(start, end) {
+    const startTime = start !== null ? start : this.state.time.start;
+    const endTime = end !== null ? end : this.state.time.end;
+    this.setState({
+      time: {
+        start: startTime,
+        end: endTime
+      }
+    });
   }
 
   render() {

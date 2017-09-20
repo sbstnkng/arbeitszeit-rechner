@@ -6,7 +6,7 @@ class TimePickerField extends Component {
     return (
       <div>
         <TimePicker
-          hintText={this.props.label}
+          floatingLabelText={this.props.label}
           format="24hr"
           onChange={this.props.handleOnChange}
           autoOk={true}

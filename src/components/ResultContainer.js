@@ -1,40 +1,35 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import ContentCard from './ContentCard';
 import TimeResult from './TimeResult';
+import TextResult from './TextResult';
 import {
   calculateMinWorkTime,
-  calculateMaxWorkTime
+  calculateMaxWorkTime,
+  calculateRealWorkTime
 } from '../services/calculationService';
-
-const StyledDiv = styled.div`overflow: hidden;`;
-
-const textFieldStyle = {
-  width: '120px',
-  float: 'left',
-  marginRight: '25px',
-  paddingTop: '0'
-};
 
 class ResultContainer extends Component {
   render(props) {
     const startTime = this.props.time.start;
+    const endTime = this.props.time.end;
+    const workTimeResult = calculateRealWorkTime(startTime, endTime);
+    const worktime = workTimeResult !== null ? workTimeResult.hours : null;
+    const overtime = workTimeResult !== null ? workTimeResult.overtime : null;
 
     return (
       <div>
-        <ContentCard title="Ergebnis">
-          <StyledDiv>
+        <ContentCard title="SOLL-Zeit">
+          <div>
             <TimeResult
               label={'7,6h'}
               value={calculateMinWorkTime(startTime)}
-              textFieldStyle={textFieldStyle}
             />
-            <TimeResult
-              label={'10h'}
-              value={calculateMaxWorkTime(startTime)}
-              textFieldStyle={textFieldStyle}
-            />
-          </StyledDiv>
+            <TimeResult label={'10h'} value={calculateMaxWorkTime(startTime)} />
+          </div>
+        </ContentCard>
+        <ContentCard title="IST-Zeit">
+          <TextResult label={'Arbeitszeit'} value={worktime} />
+          <TextResult label={'Überstunden'} value={overtime} />
         </ContentCard>
       </div>
     );

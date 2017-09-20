@@ -7,11 +7,15 @@ class WorkTimeContainer extends Component {
     super(props);
 
     this.handleOnChangeKommen = this.handleOnChangeKommen.bind(this);
+    this.handleOnChangeGehen = this.handleOnChangeGehen.bind(this);
   }
 
   handleOnChangeKommen(event, date) {
-    const time = { start: date };
-    this.props.update(time);
+    this.props.update(date, null);
+  }
+
+  handleOnChangeGehen(event, date) {
+    this.props.update(null, date);
   }
 
   render(props) {
@@ -22,7 +26,10 @@ class WorkTimeContainer extends Component {
             label="Kommen"
             handleOnChange={this.handleOnChangeKommen}
           />
-          <TimePickerField label="Gehen" disabled={true} />
+          <TimePickerField
+            label="Gehen"
+            handleOnChange={this.handleOnChangeGehen}
+          />
         </ContentCard>
       </div>
     );

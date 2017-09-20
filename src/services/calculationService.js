@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { isDateValid } from './dateUtils';
 
 export function calculateMinWorkTime(date) {
   return calculateWorkTime(date, 8, 6);
@@ -18,6 +19,47 @@ export function calculateWorkTime(date, hours, minutes) {
   return time.toDate();
 }
 
-export function isDateValid(date) {
-  return date !== null && date !== undefined && moment(date).isValid();
+export function calculateRealWorkTime(startTime, endTime) {
+  if (!isDateValid(startTime) || !isDateValid(endTime)) {
+    return null;
+  }
+
+  const start = moment.utc(startTime);
+  const result = moment.utc(endTime);
+  result.subtract(start.hours(), 'hours').subtract(start.minutes(), 'minutes');
+
+  let timeIndustry = convertToIndustry(result.toDate());
+
+  if (timeIndustry > 6) {
+    if (timeIndustry >= 6.5) {
+      timeIndustry = timeIndustry - 0.5;
+    } else {
+      timeIndustry = 6;
+    }
+  }
+
+  if (timeIndustry > 9) {
+    if (timeIndustry >= 9.25) {
+      timeIndustry = timeIndustry - 0.25;
+    } else {
+      timeIndustry = 9;
+    }
+  }
+
+  return {
+    hours: timeIndustry,
+    overtime: timeIndustry - 7.6
+  };
+}
+
+export function convertToIndustry(time) {
+  if (!isDateValid(time)) {
+    return null;
+  }
+
+  const momentTime = moment.utc(time);
+  const hours = momentTime.hours();
+  const minutes = momentTime.minutes();
+
+  return hours + minutes / 60;
 }

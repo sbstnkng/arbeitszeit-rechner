@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import TimePicker from 'material-ui/TimePicker';
+import { formatTime } from '../services/dateUtils';
+import TextField from 'material-ui/TextField';
 
 class TimeResult extends Component {
   render() {
+    const value = formatTime(this.props.value);
     return (
       <div>
-        <TimePicker
+        <TextField
           id="timeResultField"
           floatingLabelText={this.props.label}
-          format="24hr"
+          //  format="24hr"
           disabled={true}
-          value={this.props.value}
-          textFieldStyle={this.props.textFieldStyle}
+          value={value}
         />
       </div>
     );
