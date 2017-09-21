@@ -6,7 +6,7 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 class Title extends Component {
   render(props) {
     const deleteButton = (
-      <IconButton tooltip="Delete" onClick={this.props.onHandleClear}>
+      <IconButton onClick={this.props.onHandleClear}>
         <ActionDelete />
       </IconButton>
     );

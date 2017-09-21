@@ -30,7 +30,9 @@ class App extends Component {
     const cachedTime = localStorage.getItem(cacheKey);
     if (cachedTime) {
       const time = JSON.parse(cachedTime);
-      this.updateTime(new Date(time.start), new Date(time.end));
+      const startDate = time.start ? new Date(time.start) : null;
+      const endDate = time.end ? new Date(time.end) : null;
+      this.updateTime(startDate, endDate);
     }
   }
 
