@@ -4,8 +4,11 @@ import Title from './components/Title';
 import WorkTimeContainer from './components/WorkTimeContainer';
 import BreakTimeContainer from './components/BreakTimeContainer';
 import ResultContainer from './components/ResultContainer';
+import { isDateValid } from './services/dateUtils';
 
 const StyledContentWrapper = styled.div`padding: 0.5rem;`;
+
+const cacheKey = 'appTimeData';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +23,23 @@ class App extends Component {
       }
     };
     this.updateTime = this.updateTime.bind(this);
+    this.clear = this.clear.bind(this);
+  }
+
+  componentWillMount() {
+    const cachedTime = localStorage.getItem(cacheKey);
+    if (cachedTime) {
+      const time = JSON.parse(cachedTime);
+      this.updateTime(new Date(time.start), new Date(time.end));
+    }
+  }
+
+  componentDidUpdate() {
+    const start = this.state.time.start;
+    const end = this.state.time.end;
+    if (isDateValid(start) || isDateValid(end)) {
+      localStorage.setItem(cacheKey, JSON.stringify(this.state.time));
+    }
   }
 
   updateTime(start, end) {
@@ -33,12 +53,22 @@ class App extends Component {
     });
   }
 
+  clear() {
+    localStorage.removeItem(cacheKey);
+    this.setState({
+      time: {
+        start: null,
+        end: null
+      }
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Title title={this.state.meta.name} />
+        <Title title={this.state.meta.name} onHandleClear={this.clear} />
         <StyledContentWrapper>
-          <WorkTimeContainer update={this.updateTime} />
+          <WorkTimeContainer time={this.state.time} update={this.updateTime} />
           <BreakTimeContainer />
           <ResultContainer time={this.state.time} />
         </StyledContentWrapper>

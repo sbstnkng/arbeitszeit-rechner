@@ -76,7 +76,7 @@ describe('formatTime', () => {
   });
 
   test('with date before 12:00', () => {
-    const date = new Date('2017-09-18T08:35:00');
+    const date = new Date('2017-09-18T06:35:00');
 
     const result = formatTime(date);
     expect(result).toBe('0' + date.getHours() + ':' + date.getMinutes());

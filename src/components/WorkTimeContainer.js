@@ -24,10 +24,12 @@ class WorkTimeContainer extends Component {
         <ContentCard title="Arbeitszeit">
           <TimePickerField
             label="Kommen"
+            value={this.props.time.start}
             handleOnChange={this.handleOnChangeKommen}
           />
           <TimePickerField
             label="Gehen"
+            value={this.props.time.end}
             handleOnChange={this.handleOnChangeGehen}
           />
         </ContentCard>

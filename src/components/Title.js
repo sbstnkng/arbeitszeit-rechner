@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import ActionDelete from 'material-ui/svg-icons/action/delete';
 
 class Title extends Component {
-    render() {
-        return (
-            <div>
-                <AppBar 
-                    title={this.props.title}
-                    showMenuIconButton={false}
-                />
-            </div>
-        );
-    }
+  render(props) {
+    const deleteButton = (
+      <IconButton tooltip="Delete" onClick={this.props.onHandleClear}>
+        <ActionDelete />
+      </IconButton>
+    );
+
+    return (
+      <div>
+        <AppBar
+          title={this.props.title}
+          showMenuIconButton={false}
+          iconElementRight={deleteButton}
+        />
+      </div>
+    );
+  }
 }
 
 export default Title;
