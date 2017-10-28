@@ -32,8 +32,8 @@ class ResultContainer extends Component {
         </ContentCard>
         <ContentCard title="IST-Zeit">
           <StyledWrapper>
-            <TextResult label={'Arbeitszeit'} value={worktime} />
-            <TextResult label={'Überstunden'} value={overtime} />
+            <TextResult label={'Arbeitszeit'} value={worktime} minValue={7.6} />
+            <TextResult label={'Überstunden'} value={overtime} minValue={0} />
           </StyledWrapper>
         </ContentCard>
       </div>

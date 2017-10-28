@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { formatTime } from '../services/dateUtils';
 import TextField from 'material-ui/TextField';
-import styled from 'styled-components';
+import { grey700 as grey } from 'material-ui/styles/colors';
 
 const StyledTextField = styled(TextField)`
   float: left;
@@ -20,6 +21,7 @@ class TimeResult extends Component {
           disabled={true}
           value={value}
           style={{ width: '150px' }}
+          inputStyle={{ color: grey }}
         />
       </div>
     );
