@@ -63,3 +63,17 @@ export function convertToIndustry(time) {
 
   return hours + minutes / 60;
 }
+
+export function convertFromIndustry(industryTime) {
+  if (industryTime === null || industryTime === undefined) {
+    return null;
+  }
+
+  const hours = parseInt(industryTime, 10);
+  const minutes = (industryTime - hours) * 100 / 5 * 3;
+
+  const time = moment();
+  time.hours(hours);
+  time.minutes(minutes);
+  return time.toDate();
+}

@@ -3,7 +3,8 @@ import {
   calculateMinWorkTime,
   calculateMaxWorkTime,
   calculateRealWorkTime,
-  convertToIndustry
+  convertToIndustry,
+  convertFromIndustry
 } from './calculationService';
 
 describe('calculateWorkTime', () => {
@@ -150,5 +151,28 @@ describe('convertToIndustry', () => {
 
     const result = convertToIndustry(time);
     expect(result).toBe(8.5);
+  });
+});
+
+describe('convertFromIndustry', () => {
+  test('with industryTime null', () => {
+    const result = convertFromIndustry(null);
+    expect(result).toBeNull();
+  });
+
+  test('with industryTime undefined', () => {
+    const result = convertFromIndustry(undefined);
+    expect(result).toBeNull();
+  });
+
+  test('with industryTime', () => {
+    const expectTime = new Date();
+    expectTime.setHours(3);
+    expectTime.setMinutes(45);
+    const time = 3.75;
+
+    const result = convertFromIndustry(time);
+    expect(result.getHours()).toBe(expectTime.getHours());
+    expect(result.getMinutes()).toBe(expectTime.getMinutes());
   });
 });

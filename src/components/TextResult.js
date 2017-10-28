@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TextField from 'material-ui/TextField';
+import { formatTime } from '../services/dateUtils';
+import { convertFromIndustry } from '../services/calculationService';
 import {
   grey700 as grey,
   lightGreen700 as green,
@@ -32,7 +34,8 @@ class TextResult extends Component {
       }
 
       const formattedValue = value.toFixed(2);
-      return formattedValue + ' h';
+      const formattedTime = formatTime(convertFromIndustry(formattedValue));
+      return formattedValue + ' h (' + formattedTime + ')';
     }
 
     const value = formatValue(this.props.value);
