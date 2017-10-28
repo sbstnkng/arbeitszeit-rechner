@@ -16,7 +16,7 @@ const StyledTextField = styled(TextField)`
 class TextResult extends Component {
   render() {
     function getColor(value, minValue) {
-      if (minValue === null || minValue === undefined) {
+      if (!value || !minValue) {
         return grey;
       }
       return value >= minValue ? green : red;
