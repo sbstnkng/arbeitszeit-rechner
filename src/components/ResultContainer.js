@@ -7,6 +7,9 @@ import {
   calculateMaxWorkTime,
   calculateRealWorkTime
 } from '../services/calculationService';
+import styled from 'styled-components';
+
+const StyledWrapper = styled.div`overflow: hidden;`;
 
 class ResultContainer extends Component {
   render(props) {
@@ -19,17 +22,19 @@ class ResultContainer extends Component {
     return (
       <div>
         <ContentCard title="SOLL-Zeit">
-          <div>
+          <StyledWrapper>
             <TimeResult
               label={'7,6h'}
               value={calculateMinWorkTime(startTime)}
             />
             <TimeResult label={'10h'} value={calculateMaxWorkTime(startTime)} />
-          </div>
+          </StyledWrapper>
         </ContentCard>
         <ContentCard title="IST-Zeit">
-          <TextResult label={'Arbeitszeit'} value={worktime} />
-          <TextResult label={'Überstunden'} value={overtime} />
+          <StyledWrapper>
+            <TextResult label={'Arbeitszeit'} value={worktime} />
+            <TextResult label={'Überstunden'} value={overtime} />
+          </StyledWrapper>
         </ContentCard>
       </div>
     );
