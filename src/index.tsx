@@ -1,8 +1,25 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import * as injectTapEventPlugin from 'react-tap-event-plugin';
+import 'sanitize.css';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root') as HTMLElement);
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
+const AppContainer = () => {
+  return (
+    <MuiThemeProvider>
+      <App />
+    </MuiThemeProvider>
+  );
+};
+
+ReactDOM.render(<AppContainer />, document.getElementById(
+  'root'
+) as HTMLElement);
 registerServiceWorker();
