@@ -7,8 +7,10 @@
     "material-ui": "^0.19.4",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
+    "react-redux": "^5.0.6",
     "react-scripts-ts": "2.8.0",
     "react-tap-event-plugin": "^3.0.2",
+    "redux": "^3.7.2",
     "sanitize.css": "^5.0.0"
   },
   "lint-staged": {
@@ -36,6 +38,7 @@
     "@types/node": "^8.0.51",
     "@types/react": "^16.0.22",
     "@types/react-dom": "^16.0.3",
+    "@types/react-redux": "^5.0.12",
     "@types/react-tap-event-plugin": "^0.0.30",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",

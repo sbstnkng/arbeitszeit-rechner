@@ -1,4 +1,9 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import {
+  updateArrivalTimeActionCreator,
+  updateLeaveTimeActionCreator
+} from './reducer/action';
 import styled from 'styled-components';
 import { Title, WorkTimeCard } from './components';
 
@@ -6,29 +11,27 @@ const StyledContentWrapper = styled.div`
   padding: 0.5rem;
 `;
 
-class App extends React.Component {
+interface Props {
+  time: {
+    arrival?: Date;
+    leave?: Date;
+  };
+  onUpdateArrivalTime: () => void;
+  onUpdateLeaveTime: () => void;
+}
+
+export class App extends React.Component<Props, {}> {
   private static readonly TITLE: string = 'Arbeitszeit Rechner';
 
-  // TODO: this is just for basic functionality (replace with useful logic)
-  dummy() {
-    alert('image some really cool functionality here ;-)');
-  }
-
   render() {
-    // TODO: this is just for basic functionality (replace with useful logic)
-    const time: { arrival?: Date; leave?: Date } = {
-      arrival: undefined,
-      leave: undefined
-    };
-
     return (
       <div className="App">
         <Title title={App.TITLE} />
         <StyledContentWrapper>
           <WorkTimeCard
-            time={time}
-            onArrive={this.dummy}
-            onLeave={this.dummy}
+            time={this.props.time}
+            onArrive={this.props.onUpdateArrivalTime}
+            onLeave={this.props.onUpdateLeaveTime}
           />
         </StyledContentWrapper>
       </div>
@@ -36,4 +39,19 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapStateToProps(state: { time: {} }) {
+  return { ...state };
+}
+
+function mapDispatchToProps(dispatch: (action: { type: string }) => void) {
+  return {
+    onUpdateArrivalTime: (event: {}, time: Date) => {
+      dispatch(updateArrivalTimeActionCreator(time));
+    },
+    onUpdateLeaveTime: (event: {}, time: Date) => {
+      dispatch(updateLeaveTimeActionCreator(time));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
