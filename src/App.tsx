@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import {
+  initializeActionCreator,
   updateArrivalTimeActionCreator,
   updateLeaveTimeActionCreator
 } from './reducer/action';
@@ -16,12 +17,19 @@ interface Props {
     arrival?: Date;
     leave?: Date;
   };
+  onInitialization: () => void;
   onUpdateArrivalTime: () => void;
   onUpdateLeaveTime: () => void;
 }
 
 export class App extends React.Component<Props, {}> {
   private static readonly TITLE: string = 'Arbeitszeit Rechner';
+
+  constructor(props: Props) {
+    super(props);
+
+    this.props.onInitialization();
+  }
 
   render() {
     return (
@@ -45,6 +53,9 @@ function mapStateToProps(state: { time: {} }) {
 
 function mapDispatchToProps(dispatch: (action: { type: string }) => void) {
   return {
+    onInitialization: () => {
+      dispatch(initializeActionCreator());
+    },
     onUpdateArrivalTime: (event: {}, time: Date) => {
       dispatch(updateArrivalTimeActionCreator(time));
     },

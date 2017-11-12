@@ -6,6 +6,7 @@ import { App } from './App';
 
 describe('App', () => {
   let time: {};
+  let onInitialization: () => void;
   let onUpdateArrivalTime: () => void;
   let onUpdateLeaveTime: () => void;
 
@@ -14,6 +15,7 @@ describe('App', () => {
       arrival: undefined,
       leave: undefined
     };
+    onInitialization = jest.fn();
     onUpdateArrivalTime = jest.fn();
     onUpdateLeaveTime = jest.fn();
   });
@@ -26,6 +28,7 @@ describe('App', () => {
         <MuiThemeProvider>
           <App
             time={time}
+            onInitialization={onInitialization}
             onUpdateArrivalTime={onUpdateArrivalTime}
             onUpdateLeaveTime={onUpdateLeaveTime}
           />
