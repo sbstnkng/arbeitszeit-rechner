@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
+import registerServiceWorker from './registerServiceWorker';
+import { MuiThemeProvider } from 'material-ui/styles';
+import App from './App';
 import 'sanitize.css';
 import './index.css';
 

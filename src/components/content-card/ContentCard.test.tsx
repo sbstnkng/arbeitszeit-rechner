@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import { ContentCard } from './ContentCard';
-import { CardHeader, CardText } from 'material-ui/Card';
+import { CardHeader, CardText } from 'material-ui';
 
 Enzyme.configure({ adapter: new Adapter() });
 

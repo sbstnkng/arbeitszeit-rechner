@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AppBar from 'material-ui/AppBar';
+import { AppBar } from 'material-ui';
 
 interface Props {
   title: string;

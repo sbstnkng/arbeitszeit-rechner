@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import { Title } from './Title';
-import AppBar from 'material-ui/AppBar';
+import { AppBar } from 'material-ui';
 
 Enzyme.configure({ adapter: new Adapter() });
 
