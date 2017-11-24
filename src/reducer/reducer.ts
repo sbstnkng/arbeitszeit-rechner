@@ -1,11 +1,21 @@
-import { UPDATE_ARRIVAL_TIME, UPDATE_LEAVE_TIME, INITIALIZE } from './action';
+import {
+  UPDATE_ARRIVAL_TIME,
+  UPDATE_LEAVE_TIME,
+  INITIALIZE,
+  CLEAR_CACHE
+} from './action';
 import { LocalStorageCache, CacheState } from '../cache';
 
 const initalState = {
   time: {
     arrival: undefined,
     leave: undefined
-  }
+  },
+  targetTime: {
+    normal: undefined,
+    max: undefined
+  },
+  actualTime: undefined
 };
 
 interface State {
@@ -13,6 +23,11 @@ interface State {
     arrival?: Date;
     leave?: Date;
   };
+  targetTime: {
+    normal?: Date;
+    max?: Date;
+  };
+  actualTime?: Date;
 }
 interface Action {
   type: string;
@@ -52,6 +67,10 @@ export default function(state: State = initalState, action: Action): State {
       };
       updateStateCache(newState);
       break;
+    case CLEAR_CACHE:
+      newState = initalState;
+      clearCachedState();
+      break;
     default:
       break;
   }
@@ -77,4 +96,8 @@ function updateStateCache(state: State): void {
     leave: state.time.leave
   };
   LocalStorageCache.update(cacheState);
+}
+
+function clearCachedState(): void {
+  LocalStorageCache.remove();
 }

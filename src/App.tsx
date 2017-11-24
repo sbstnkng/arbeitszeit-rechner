@@ -3,10 +3,16 @@ import { connect } from 'react-redux';
 import {
   initializeActionCreator,
   updateArrivalTimeActionCreator,
-  updateLeaveTimeActionCreator
+  updateLeaveTimeActionCreator,
+  clearCacheActionCreator
 } from './reducer/action';
 import styled from 'styled-components';
-import { Title, WorkTimeCard } from './components';
+import {
+  Title,
+  WorkTimeCard,
+  TargetTimeCard,
+  ActualTimeCard
+} from './components';
 
 const StyledContentWrapper = styled.div`
   padding: 0.5rem;
@@ -17,9 +23,15 @@ interface Props {
     arrival?: Date;
     leave?: Date;
   };
+  targetTime: {
+    normal?: Date;
+    max?: Date;
+  };
+  actualTime?: Date;
   onInitialization: () => void;
   onUpdateArrivalTime: () => void;
   onUpdateLeaveTime: () => void;
+  onClearStateCache: () => void;
 }
 
 export class App extends React.Component<Props, {}> {
@@ -34,20 +46,31 @@ export class App extends React.Component<Props, {}> {
   render() {
     return (
       <div className="App">
-        <Title title={App.TITLE} />
+        <Title
+          title={App.TITLE}
+          onHandleDelete={this.props.onClearStateCache}
+        />
         <StyledContentWrapper>
           <WorkTimeCard
             time={this.props.time}
             onArrive={this.props.onUpdateArrivalTime}
             onLeave={this.props.onUpdateLeaveTime}
           />
+          <TargetTimeCard targetTime={this.props.targetTime} />
+          <ActualTimeCard actualTime={this.props.actualTime} />
         </StyledContentWrapper>
       </div>
     );
   }
 }
 
-function mapStateToProps(state: { time: {} }) {
+interface StateForProps {
+  time: {};
+  targetTime: {};
+  actualTime?: Date;
+}
+
+function mapStateToProps(state: StateForProps) {
   return { ...state };
 }
 
@@ -61,6 +84,9 @@ function mapDispatchToProps(dispatch: (action: { type: string }) => void) {
     },
     onUpdateLeaveTime: (event: {}, time: Date) => {
       dispatch(updateLeaveTimeActionCreator(time));
+    },
+    onClearStateCache: () => {
+      dispatch(clearCacheActionCreator());
     }
   };
 }

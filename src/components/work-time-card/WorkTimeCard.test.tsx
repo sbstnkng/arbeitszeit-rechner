@@ -23,6 +23,7 @@ describe('WorkTimeCard', () => {
       leave: new Date()
     };
   });
+
   it('should render a <ContentCard /> component', () => {
     const wrapper = Enzyme.shallow(
       <WorkTimeCard time={time} onArrive={onArrive} onLeave={onLeave} />

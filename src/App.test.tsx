@@ -6,18 +6,27 @@ import { App } from './App';
 
 describe('App', () => {
   let time: {};
+  let targetTime: {};
+  let actualTime: Date | undefined;
   let onInitialization: () => void;
   let onUpdateArrivalTime: () => void;
   let onUpdateLeaveTime: () => void;
+  let onClearStateCache: () => void;
 
   beforeEach(() => {
     time = {
       arrival: undefined,
       leave: undefined
     };
+    targetTime = {
+      normal: undefined,
+      max: undefined
+    };
+    actualTime = undefined;
     onInitialization = jest.fn();
     onUpdateArrivalTime = jest.fn();
     onUpdateLeaveTime = jest.fn();
+    onClearStateCache = jest.fn();
   });
 
   it('renders without crashing', () => {
@@ -28,9 +37,12 @@ describe('App', () => {
         <MuiThemeProvider>
           <App
             time={time}
+            targetTime={targetTime}
+            actualTime={actualTime}
             onInitialization={onInitialization}
             onUpdateArrivalTime={onUpdateArrivalTime}
             onUpdateLeaveTime={onUpdateLeaveTime}
+            onClearStateCache={onClearStateCache}
           />
         </MuiThemeProvider>
       );

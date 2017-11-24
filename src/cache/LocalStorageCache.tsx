@@ -11,7 +11,7 @@ export class LocalStorageCache {
     const cachedTime: string | null = localStorage.getItem(this.CACHE_KEY);
 
     if (cachedTime) {
-      const time = JSON.parse(cachedTime);
+      const time: CacheState = JSON.parse(cachedTime);
       const arrivalDate = time.arrival ? new Date(time.arrival) : undefined;
       const leaveDate = time.leave ? new Date(time.leave) : undefined;
 
@@ -26,6 +26,10 @@ export class LocalStorageCache {
     if (stateToCache) {
       localStorage.setItem(this.CACHE_KEY, JSON.stringify(stateToCache));
     }
+  }
+
+  public static remove(): void {
+    localStorage.removeItem(this.CACHE_KEY);
   }
 
   private static createInitialCacheState(): CacheState {
