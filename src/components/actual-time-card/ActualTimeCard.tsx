@@ -8,20 +8,22 @@ const StyledWrapper = styled.div`
 `;
 
 interface Props {
-  actualTime?: Date;
+  actualTime: {
+    time?: Date;
+    overtime?: Date;
+  };
 }
 
 export class ActualTimeCard extends React.Component<Props, {}> {
   private static readonly TITLE = 'Istzeit';
 
   render() {
-    const worktime = 'worktime';
-    const overtime = 'overtime';
+    const { time, overtime } = this.props.actualTime;
     return (
       <ContentCard title={ActualTimeCard.TITLE}>
         <StyledWrapper>
-          <TextResultField label="Arbeitszeit" value={worktime} />
-          <TextResultField label="Überstunden" value={overtime} />
+          <TextResultField label="Arbeitszeit" date={time} />
+          <TextResultField label="Überstunden" date={overtime} />
         </StyledWrapper>
       </ContentCard>
     );

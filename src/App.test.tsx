@@ -7,7 +7,7 @@ import { App } from './App';
 describe('App', () => {
   let time: {};
   let targetTime: {};
-  let actualTime: Date | undefined;
+  let actualTime: {};
   let onInitialization: () => void;
   let onUpdateArrivalTime: () => void;
   let onUpdateLeaveTime: () => void;
@@ -22,7 +22,10 @@ describe('App', () => {
       normal: undefined,
       max: undefined
     };
-    actualTime = undefined;
+    actualTime = {
+      time: undefined,
+      overtime: undefined
+    };
     onInitialization = jest.fn();
     onUpdateArrivalTime = jest.fn();
     onUpdateLeaveTime = jest.fn();

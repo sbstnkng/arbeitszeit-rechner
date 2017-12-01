@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextField } from 'material-ui';
 import styled from 'styled-components';
 import { grey700 as grey } from 'material-ui/styles/colors';
+import { TimeUtility } from '../helpers';
 
 const StyledTextField = styled(TextField)`
   float: left;
@@ -11,7 +12,7 @@ const StyledTextField = styled(TextField)`
 
 interface Props {
   label: string;
-  value?: string;
+  date?: Date;
 }
 
 export class TextResultField extends React.Component<Props, {}> {
@@ -19,16 +20,35 @@ export class TextResultField extends React.Component<Props, {}> {
   private static readonly INPUT_STYLE = { color: grey };
   private static readonly UNDERLINE_STYLE = { borderColor: grey };
 
+  private formattedText?: string;
+
+  constructor(props: Props) {
+    super(props);
+    this.formattedText = this.createFormattedText(this.props.date);
+  }
+
   render() {
     return (
       <StyledTextField
         floatingLabelText={this.props.label}
-        value={this.props.value}
+        value={this.formattedText}
         disabled={true}
         style={TextResultField.TEXT_FIELD_STYLE}
         inputStyle={TextResultField.INPUT_STYLE}
         underlineDisabledStyle={TextResultField.UNDERLINE_STYLE}
       />
+    );
+  }
+
+  private createFormattedText(date?: Date): string | undefined {
+    if (!date) {
+      return undefined;
+    }
+    return (
+      TimeUtility.toIndustrialTime(date) +
+      'h (' +
+      TimeUtility.toTime(date) +
+      ')'
     );
   }
 }

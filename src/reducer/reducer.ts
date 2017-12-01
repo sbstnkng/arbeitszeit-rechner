@@ -15,7 +15,10 @@ const initalState = {
     normal: undefined,
     max: undefined
   },
-  actualTime: undefined
+  actualTime: {
+    time: undefined,
+    overtime: undefined
+  }
 };
 
 interface State {
@@ -27,7 +30,10 @@ interface State {
     normal?: Date;
     max?: Date;
   };
-  actualTime?: Date;
+  actualTime: {
+    time?: Date;
+    overtime?: Date;
+  };
 }
 interface Action {
   type: string;

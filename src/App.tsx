@@ -27,7 +27,10 @@ interface Props {
     normal?: Date;
     max?: Date;
   };
-  actualTime?: Date;
+  actualTime: {
+    time?: Date;
+    overtime?: Date;
+  };
   onInitialization: () => void;
   onUpdateArrivalTime: () => void;
   onUpdateLeaveTime: () => void;
@@ -67,7 +70,7 @@ export class App extends React.Component<Props, {}> {
 interface StateForProps {
   time: {};
   targetTime: {};
-  actualTime?: Date;
+  actualTime: {};
 }
 
 function mapStateToProps(state: StateForProps) {

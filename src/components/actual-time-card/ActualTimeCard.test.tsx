@@ -8,10 +8,16 @@ import { ContentCard } from '../content-card';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('ActualTimeCard', () => {
-  let actualTime: Date;
+  let actualTime: {
+    time?: Date;
+    overtime?: Date;
+  };
 
   beforeEach(() => {
-    actualTime = new Date();
+    actualTime = {
+      time: new Date(),
+      overtime: new Date()
+    };
   });
 
   it('should render a <ContentCard /> component', () => {
