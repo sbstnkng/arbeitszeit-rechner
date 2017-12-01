@@ -5,6 +5,7 @@ import {
   CLEAR_CACHE
 } from './action';
 import { LocalStorageCache, CacheState } from '../cache';
+import { CalculationService } from '../services';
 
 const initalState = {
   time: {
@@ -59,6 +60,10 @@ export default function(state: State = initalState, action: Action): State {
         time: {
           arrival: action.time,
           leave: state.time.leave
+        },
+        targetTime: {
+          normal: CalculationService.calculateMinWorkTime(action.time),
+          max: CalculationService.calculateMaxWorkTime(action.time)
         }
       };
       updateStateCache(newState);
