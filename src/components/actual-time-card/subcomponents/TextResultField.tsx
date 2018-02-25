@@ -60,7 +60,7 @@ export class TextResultField extends React.Component<Props, {}> {
     hasNegativeValue?: boolean
   ): string | undefined {
     if (!date) {
-      return undefined;
+      return '';
     }
 
     let preSign: string = '';
@@ -82,13 +82,16 @@ export class TextResultField extends React.Component<Props, {}> {
       input: TextResultField.INPUT_STYLE_DEFAULT,
       underline: TextResultField.UNDERLINE_STYLE_DEFAULT
     };
-
-    if (isPositive) {
-      styles.input = TextResultField.INPUT_STYLE_GREEN;
-      styles.underline = TextResultField.UNDERLINE_STYLE_GREEN;
-    } else if (!isPositive) {
-      styles.input = TextResultField.INPUT_STYLE_RED;
-      styles.underline = TextResultField.UNDERLINE_STYLE_RED;
+    switch (isPositive) {
+      case true:
+        styles.input = TextResultField.INPUT_STYLE_GREEN;
+        styles.underline = TextResultField.UNDERLINE_STYLE_GREEN;
+        break;
+      case false:
+        styles.input = TextResultField.INPUT_STYLE_RED;
+        styles.underline = TextResultField.UNDERLINE_STYLE_RED;
+        break;
+      default:
     }
 
     return styles;

@@ -95,6 +95,10 @@ export default function(state: State = initalState, action: Action): State {
           overtime: CalculationService.calculateOvertime(
             action.time,
             state.time.leave
+          ),
+          isPositive: CalculationService.isWorkTimePositive(
+            action.time,
+            state.time.leave
           )
         }
       };
@@ -113,6 +117,10 @@ export default function(state: State = initalState, action: Action): State {
             action.time
           ),
           overtime: CalculationService.calculateOvertime(
+            state.time.arrival,
+            action.time
+          ),
+          isPositive: CalculationService.isWorkTimePositive(
             state.time.arrival,
             action.time
           )
