@@ -35,6 +35,7 @@ interface State {
   actualTime: {
     time?: Date;
     overtime?: Date;
+    isPositive?: boolean;
   };
 }
 interface Action {
@@ -65,6 +66,10 @@ export default function(state: State = initalState, action: Action): State {
             cachedState.time.leave
           ),
           overtime: CalculationService.calculateOvertime(
+            cachedState.time.arrival,
+            cachedState.time.leave
+          ),
+          isPositive: CalculationService.isWorkTimePositive(
             cachedState.time.arrival,
             cachedState.time.leave
           )

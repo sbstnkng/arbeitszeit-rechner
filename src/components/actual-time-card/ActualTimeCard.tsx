@@ -11,6 +11,7 @@ interface Props {
   actualTime: {
     time?: Date;
     overtime?: Date;
+    isPositive?: boolean;
   };
 }
 
@@ -18,12 +19,21 @@ export class ActualTimeCard extends React.Component<Props, {}> {
   private static readonly TITLE = 'Istzeit';
 
   render() {
-    const { time, overtime } = this.props.actualTime;
+    const { time, overtime, isPositive } = this.props.actualTime;
     return (
       <ContentCard title={ActualTimeCard.TITLE}>
         <StyledWrapper>
-          <TextResultField label="Arbeitszeit" date={time} />
-          <TextResultField label="Überstunden" date={overtime} />
+          <TextResultField
+            label="Arbeitszeit"
+            date={time}
+            isPositive={isPositive}
+          />
+          <TextResultField
+            label="Überstunden"
+            date={overtime}
+            isPositive={isPositive}
+            hasNegativeValue={true}
+          />
         </StyledWrapper>
       </ContentCard>
     );
