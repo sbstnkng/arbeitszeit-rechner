@@ -86,7 +86,7 @@ export class TextResultField extends React.Component<Props, {}> {
     if (isPositive) {
       styles.input = TextResultField.INPUT_STYLE_GREEN;
       styles.underline = TextResultField.UNDERLINE_STYLE_GREEN;
-    } else {
+    } else if (!isPositive) {
       styles.input = TextResultField.INPUT_STYLE_RED;
       styles.underline = TextResultField.UNDERLINE_STYLE_RED;
     }
