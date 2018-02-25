@@ -33,15 +33,14 @@ export class ActualTimeCard extends React.Component<Props, {}> {
 
   render() {
     const { time, overtime, isPositive } = this.props.actualTime;
-    const color = this.getStatusColor(isPositive).color;
+    const { color, background } = this.getStatusColor(isPositive);
     const icon = this.getStatusMood(isPositive);
-    const backgroundColor = this.getStatusColor(isPositive).background;
     return (
       <ContentCard
         title={ActualTimeCard.TITLE}
         titleColor={color}
         titleIcon={icon}
-        backgroundColor={backgroundColor}
+        backgroundColor={background}
       >
         <StyledWrapper>
           <TextResultField
