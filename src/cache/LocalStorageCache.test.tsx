@@ -24,6 +24,10 @@ describe('LocalStorageCache', () => {
   it('should update the storage', () => {
     state.arrival = new Date();
     state.leave = new Date();
+    // Reset milliseconds because of flaky tests
+    state.arrival.setUTCMilliseconds(0);
+    state.leave.setUTCMilliseconds(0);
+
     LocalStorageCache.update(state);
     expect(mock.store[LocalStorageMock.KEY]).toEqual(JSON.stringify(state));
   });
