@@ -20,18 +20,13 @@ export class TextResultField extends React.Component<Props, {}> {
   private static readonly INPUT_STYLE = { color: grey };
   private static readonly UNDERLINE_STYLE = { borderColor: grey };
 
-  private formattedText?: string;
-
-  constructor(props: Props) {
-    super(props);
-    this.formattedText = this.createFormattedText(this.props.date);
-  }
-
   render() {
+    const { date } = this.props;
+    const formattedText: string | undefined = this.createFormattedText(date);
     return (
       <StyledTextField
         floatingLabelText={this.props.label}
-        value={this.formattedText}
+        value={formattedText}
         disabled={true}
         style={TextResultField.TEXT_FIELD_STYLE}
         inputStyle={TextResultField.INPUT_STYLE}
