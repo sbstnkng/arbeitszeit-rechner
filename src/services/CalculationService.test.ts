@@ -166,3 +166,49 @@ describe('calculateOverime', () => {
     expect(result).toEqual(expectedDate);
   });
 });
+
+describe('isWorkTimePositive', () => {
+  let startDate: Date;
+  let endDate: Date;
+
+  beforeEach(() => {
+    startDate = new Date();
+    endDate = new Date();
+  });
+
+  it('should return undefined, when start date is invalid', () => {
+    startDate = moment.invalid().toDate();
+    const result = CalculationService.isWorkTimePositive(startDate, endDate);
+    expect(result).toBeUndefined();
+  });
+
+  it('should return undefined, when end date is invalid', () => {
+    endDate = moment.invalid().toDate();
+    const result = CalculationService.isWorkTimePositive(startDate, endDate);
+    expect(result).toBeUndefined();
+  });
+
+  it('should be true when the minimum work time is completed', () => {
+    startDate.setUTCHours(8, 0, 0, 0);
+    endDate.setUTCHours(16, 6, 0, 0);
+
+    const result = CalculationService.isWorkTimePositive(startDate, endDate);
+    expect(result).toEqual(true);
+  });
+
+  it('should be true when there is overtime done', () => {
+    startDate.setUTCHours(8, 0, 0, 0);
+    endDate.setUTCHours(16, 36, 0, 0);
+
+    const result = CalculationService.isWorkTimePositive(startDate, endDate);
+    expect(result).toEqual(true);
+  });
+
+  it('should be false when the minimum work time has not been completed', () => {
+    startDate.setUTCHours(8, 30, 0, 0);
+    endDate.setUTCHours(16, 6, 0, 0);
+
+    const result = CalculationService.isWorkTimePositive(startDate, endDate);
+    expect(result).toEqual(false);
+  });
+});

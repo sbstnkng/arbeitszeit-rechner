@@ -30,6 +30,7 @@ interface Props {
   actualTime: {
     time?: Date;
     overtime?: Date;
+    isPositive?: boolean;
   };
   onInitialization: () => void;
   onUpdateArrivalTime: () => void;

@@ -5,9 +5,15 @@ describe('LocalStorageCache', () => {
   let mock: LocalStorageMock;
 
   beforeEach(() => {
+    const arrival: Date = new Date();
+    const leave: Date = new Date();
+    // Reset milliseconds because of flaky tests
+    arrival.setUTCMilliseconds(0);
+    leave.setUTCMilliseconds(0);
+
     state = {
-      arrival: new Date(),
-      leave: new Date()
+      arrival: arrival,
+      leave: leave
     };
 
     mock = new LocalStorageMock(JSON.stringify(state));
@@ -22,8 +28,17 @@ describe('LocalStorageCache', () => {
   });
 
   it('should update the storage', () => {
-    state.arrival = new Date();
-    state.leave = new Date();
+    const arrival: Date = new Date();
+    const leave: Date = new Date();
+    // Reset milliseconds because of flaky tests
+    arrival.setUTCMilliseconds(0);
+    leave.setUTCMilliseconds(0);
+
+    state = {
+      arrival: arrival,
+      leave: leave
+    };
+
     LocalStorageCache.update(state);
     expect(mock.store[LocalStorageMock.KEY]).toEqual(JSON.stringify(state));
   });

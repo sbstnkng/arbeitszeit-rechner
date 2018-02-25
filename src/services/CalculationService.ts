@@ -89,6 +89,26 @@ export class CalculationService {
     return time.toDate();
   }
 
+  public static isWorkTimePositive(
+    startTime: Date | undefined,
+    endTime: Date | undefined
+  ): boolean | undefined {
+    const workTime: Date | undefined = this.calculateActualWorkTime(
+      startTime,
+      endTime
+    );
+    if (workTime === undefined) {
+      return undefined;
+    }
+
+    let time: moment.Moment = moment(workTime).utc();
+    const standardTime: moment.Moment = time
+      .clone()
+      .set({ hours: 7, minutes: 36 });
+
+    return time.isSameOrAfter(standardTime);
+  }
+
   private static calculateWorkTime(
     date: Date | undefined,
     hours: number,
