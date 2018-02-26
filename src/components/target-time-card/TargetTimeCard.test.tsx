@@ -8,10 +8,7 @@ import { ContentCard } from '../content-card';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('TargetTimeCard', () => {
-  let targetTime: {
-    normal: Date;
-    max: Date;
-  };
+  let targetTime: {};
 
   beforeEach(() => {
     targetTime = {

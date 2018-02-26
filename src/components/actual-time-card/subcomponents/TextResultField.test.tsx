@@ -19,21 +19,21 @@ describe('TextResultField', () => {
 
   it('should show the given label', () => {
     const wrapper = Enzyme.shallow(
-      <TextResultField label={label} date={value} />
+      <TextResultField label={label} value={value} />
     );
     expect(wrapper.find({ floatingLabelText: label })).toHaveLength(1);
   });
 
   it('should be disabled', () => {
     const wrapper = Enzyme.shallow(
-      <TextResultField label={label} date={value} />
+      <TextResultField label={label} value={value} />
     );
     expect(wrapper.find({ disabled: true })).toHaveLength(1);
   });
 
   it('should show the given value', () => {
     const wrapper = Enzyme.shallow(
-      <TextResultField label={label} date={value} />
+      <TextResultField label={label} value={value} />
     );
     expect(wrapper.find({ value: expected })).toHaveLength(1);
   });

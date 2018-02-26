@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TimePicker as MaterialTimePicker } from 'material-ui';
 import { grey700 as grey } from 'material-ui/styles/colors';
 import styled from 'styled-components';
+import { LabelDateValue } from '../../../types';
 
 const StyledTimePicker = styled(MaterialTimePicker)`
   float: left;
@@ -9,12 +10,7 @@ const StyledTimePicker = styled(MaterialTimePicker)`
   box-sizing: border-box;
 `;
 
-interface Props {
-  label: string;
-  value?: Date;
-}
-
-export class TimeResultField extends React.Component<Props, {}> {
+export class TimeResultField extends React.Component<LabelDateValue, {}> {
   private static readonly TIME_FORMAT = '24hr';
   private static readonly TEXT_FIELD_STYLE = { width: '150px' };
   private static readonly INPUT_STYLE = { color: grey };

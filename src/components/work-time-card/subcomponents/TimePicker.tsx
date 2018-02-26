@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TimePicker as MaterialTimePicker } from 'material-ui';
 import styled from 'styled-components';
+import { LabelDateValue } from '../../../types';
 
 const StyledTimePicker = styled(MaterialTimePicker)`
   float: left;
@@ -8,9 +9,7 @@ const StyledTimePicker = styled(MaterialTimePicker)`
   box-sizing: border-box;
 `;
 
-interface Props {
-  label: string;
-  value?: Date;
+interface Props extends LabelDateValue {
   onChange: () => void;
 }
 

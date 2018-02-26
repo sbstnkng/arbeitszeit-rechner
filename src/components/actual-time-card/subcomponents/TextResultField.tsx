@@ -7,6 +7,7 @@ import {
   green700 as green
 } from 'material-ui/styles/colors';
 import { TimeUtility } from '../helpers';
+import { LabelDateValue } from '../../../types';
 
 const StyledTextField = styled(TextField)`
   float: left;
@@ -14,11 +15,14 @@ const StyledTextField = styled(TextField)`
   box-sizing: border-box;
 `;
 
-interface Props {
-  label: string;
-  date?: Date;
+interface Props extends LabelDateValue {
   isPositive?: boolean;
   hasNegativeValue?: boolean;
+}
+
+interface StatusStyles {
+  input: {};
+  underline: {};
 }
 
 export class TextResultField extends React.Component<Props, {}> {
@@ -35,13 +39,13 @@ export class TextResultField extends React.Component<Props, {}> {
   private static readonly UNDERLINE_STYLE_RED = { borderColor: red };
 
   render() {
-    const { label, date, isPositive, hasNegativeValue } = this.props;
+    const { label, value, isPositive, hasNegativeValue } = this.props;
     const formattedText: string | undefined = this.createFormattedText(
-      date,
+      value,
       isPositive,
       hasNegativeValue
     );
-    const styles = this.getStatusStyles(isPositive);
+    const styles: StatusStyles = this.getStatusStyles(isPositive);
     return (
       <StyledTextField
         floatingLabelText={label}
@@ -77,7 +81,7 @@ export class TextResultField extends React.Component<Props, {}> {
     );
   }
 
-  private getStatusStyles(isPositive?: boolean) {
+  private getStatusStyles(isPositive?: boolean): StatusStyles {
     const styles = {
       input: TextResultField.INPUT_STYLE_DEFAULT,
       underline: TextResultField.UNDERLINE_STYLE_DEFAULT

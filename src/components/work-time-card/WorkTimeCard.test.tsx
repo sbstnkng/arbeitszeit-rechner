@@ -10,10 +10,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('WorkTimeCard', () => {
   let onArrive: () => void;
   let onLeave: () => void;
-  let time: {
-    arrival: Date;
-    leave: Date;
-  };
+  let time: {};
 
   beforeEach(() => {
     onArrive = jest.fn();

@@ -7,17 +7,11 @@ import {
 import { ContentCard } from '../content-card';
 import { TimeResultField } from './subcomponents';
 import styled from 'styled-components';
+import { TargetTime } from '../../types';
 
 const StyledWrapper = styled.div`
   overflow: hidden;
 `;
-
-interface Props {
-  targetTime: {
-    normal?: Date;
-    max?: Date;
-  };
-}
 
 const iconStyles = {
   width: 20,
@@ -25,7 +19,7 @@ const iconStyles = {
   marginRight: 10
 };
 
-export class TargetTimeCard extends React.Component<Props, {}> {
+export class TargetTimeCard extends React.Component<TargetTime, {}> {
   private static readonly TITLE = 'Sollzeit';
 
   render() {
