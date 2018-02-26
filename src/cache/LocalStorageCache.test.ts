@@ -1,7 +1,8 @@
-import { LocalStorageCache, CacheState } from './LocalStorageCache';
+import { CacheData } from '../types';
+import { LocalStorageCache } from './LocalStorageCache';
 
 describe('LocalStorageCache', () => {
-  let state: CacheState;
+  let state: CacheData;
   let mock: LocalStorageMock;
 
   beforeEach(() => {
@@ -23,7 +24,7 @@ describe('LocalStorageCache', () => {
   });
 
   it('should read the right state from the storage', () => {
-    const cachedState: CacheState = LocalStorageCache.read();
+    const cachedState: CacheData = LocalStorageCache.read();
     expect(JSON.stringify(cachedState)).toEqual(JSON.stringify(state));
   });
 

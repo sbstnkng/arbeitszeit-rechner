@@ -7,6 +7,7 @@ import {
   grey700 as grey,
   grey50 as lightGrey
 } from 'material-ui/styles/colors';
+import { WorkTime } from '../../types';
 
 const StyledWrapper = styled.div`
   overflow: hidden;
@@ -18,13 +19,9 @@ const iconStyles = {
   marginRight: 10
 };
 
-interface Props {
+interface Props extends WorkTime {
   onArrive: () => void;
   onLeave: () => void;
-  time: {
-    arrival?: Date;
-    leave?: Date;
-  };
 }
 
 export class WorkTimeCard extends React.Component<Props, {}> {

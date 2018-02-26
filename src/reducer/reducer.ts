@@ -4,10 +4,11 @@ import {
   INITIALIZE,
   CLEAR_CACHE
 } from './action';
-import { LocalStorageCache, CacheState } from '../cache';
+import { LocalStorageCache } from '../cache';
 import { CalculationService } from '../services';
+import { AppData, Action, CacheData } from '../types';
 
-const initalState = {
+const initalState: AppData = {
   time: {
     arrival: undefined,
     leave: undefined
@@ -23,31 +24,11 @@ const initalState = {
   }
 };
 
-interface State {
-  time: {
-    arrival?: Date;
-    leave?: Date;
-  };
-  targetTime: {
-    normal?: Date;
-    max?: Date;
-  };
-  actualTime: {
-    time?: Date;
-    overtime?: Date;
-    isPositive?: boolean;
-  };
-}
-interface Action {
-  type: string;
-  time: Date;
-}
-
-export default function(state: State = initalState, action: Action): State {
+export default function(state: AppData = initalState, action: Action): AppData {
   let newState = state;
   switch (action.type) {
     case INITIALIZE:
-      const cachedState: State = readCachedState();
+      const cachedState: AppData = readCachedState();
       newState = {
         ...state,
         time: {
@@ -139,8 +120,8 @@ export default function(state: State = initalState, action: Action): State {
   return newState;
 }
 
-function readCachedState(): State {
-  const cachedState: CacheState = LocalStorageCache.read();
+function readCachedState(): AppData {
+  const cachedState: CacheData = LocalStorageCache.read();
 
   return {
     ...initalState,
@@ -151,8 +132,8 @@ function readCachedState(): State {
   };
 }
 
-function updateStateCache(state: State): void {
-  const cacheState: CacheState = {
+function updateStateCache(state: AppData): void {
+  const cacheState: CacheData = {
     arrival: state.time.arrival,
     leave: state.time.leave
   };

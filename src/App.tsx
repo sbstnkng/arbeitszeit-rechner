@@ -13,25 +13,13 @@ import {
   TargetTimeCard,
   ActualTimeCard
 } from './components';
+import { AppData, ActionType } from './types';
 
 const StyledContentWrapper = styled.div`
   padding: 0.5rem;
 `;
 
-interface Props {
-  time: {
-    arrival?: Date;
-    leave?: Date;
-  };
-  targetTime: {
-    normal?: Date;
-    max?: Date;
-  };
-  actualTime: {
-    time?: Date;
-    overtime?: Date;
-    isPositive?: boolean;
-  };
+interface Props extends AppData {
   onInitialization: () => void;
   onUpdateArrivalTime: () => void;
   onUpdateLeaveTime: () => void;
@@ -68,17 +56,11 @@ export class App extends React.Component<Props, {}> {
   }
 }
 
-interface StateForProps {
-  time: {};
-  targetTime: {};
-  actualTime: {};
-}
-
-function mapStateToProps(state: StateForProps) {
+function mapStateToProps(state: AppData) {
   return { ...state };
 }
 
-function mapDispatchToProps(dispatch: (action: { type: string }) => void) {
+function mapDispatchToProps(dispatch: (action: ActionType) => void) {
   return {
     onInitialization: () => {
       dispatch(initializeActionCreator());
