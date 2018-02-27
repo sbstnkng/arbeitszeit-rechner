@@ -4,14 +4,7 @@ import {
   SocialSentimentSatisfied as PositivIcon,
   SocialSentimentDissatisfied as NegativIcon
 } from 'material-ui/svg-icons';
-import {
-  grey700 as grey,
-  green700 as green,
-  green50 as lightGreen,
-  red700 as red,
-  red50 as lightRed,
-  blue50 as lightBlue
-} from 'material-ui/styles/colors';
+import { Color } from '../../constants';
 import { ContentCard } from '../content-card';
 import { TextResultField } from './subcomponents';
 import styled from 'styled-components';
@@ -62,16 +55,16 @@ export class ActualTimeCard extends React.Component<ActualTime, {}> {
     let background: string;
     switch (isPositive) {
       case true:
-        color = green;
-        background = lightGreen;
+        color = Color.TEXT_POSITIV;
+        background = Color.BACKGROUND_POSITIV;
         break;
       case false:
-        color = red;
-        background = lightRed;
+        color = Color.TEXT_NEGATIV;
+        background = Color.BACKGROUND_NEGATIV;
         break;
       default:
-        color = grey;
-        background = lightBlue;
+        color = Color.TEXT;
+        background = Color.BACKGROUND;
         break;
     }
 

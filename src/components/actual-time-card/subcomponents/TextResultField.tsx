@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { TextField } from 'material-ui';
 import styled from 'styled-components';
-import {
-  grey700 as grey,
-  red700 as red,
-  green700 as green
-} from 'material-ui/styles/colors';
+import { Color } from '../../../constants';
 import { TimeUtility } from '../helpers';
 import { LabelDateValue } from '../../../types';
 
@@ -31,12 +27,16 @@ export class TextResultField extends React.Component<Props, {}> {
   };
 
   private static readonly TEXT_FIELD_STYLE = { width: '150px' };
-  private static readonly INPUT_STYLE_DEFAULT = { color: grey };
-  private static readonly INPUT_STYLE_GREEN = { color: green };
-  private static readonly INPUT_STYLE_RED = { color: red };
-  private static readonly UNDERLINE_STYLE_DEFAULT = { borderColor: grey };
-  private static readonly UNDERLINE_STYLE_GREEN = { borderColor: green };
-  private static readonly UNDERLINE_STYLE_RED = { borderColor: red };
+  private static readonly INPUT_STYLE_DEFAULT = { color: Color.TEXT };
+  private static readonly INPUT_STYLE_GREEN = { color: Color.TEXT_POSITIV };
+  private static readonly INPUT_STYLE_RED = { color: Color.TEXT_NEGATIV };
+  private static readonly UNDERLINE_STYLE_DEFAULT = { borderColor: Color.TEXT };
+  private static readonly UNDERLINE_STYLE_GREEN = {
+    borderColor: Color.TEXT_POSITIV
+  };
+  private static readonly UNDERLINE_STYLE_RED = {
+    borderColor: Color.TEXT_NEGATIV
+  };
 
   render() {
     const { label, value, isPositive, hasNegativeValue } = this.props;

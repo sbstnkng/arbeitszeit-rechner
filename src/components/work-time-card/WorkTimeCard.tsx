@@ -3,10 +3,7 @@ import { ContentCard } from '../content-card';
 import { TimePicker } from './subcomponents';
 import styled from 'styled-components';
 import { ActionSchedule } from 'material-ui/svg-icons';
-import {
-  grey700 as grey,
-  grey50 as lightGrey
-} from 'material-ui/styles/colors';
+import { Color } from '../../constants';
 import { WorkTime } from '../../types';
 
 const StyledWrapper = styled.div`
@@ -28,13 +25,15 @@ export class WorkTimeCard extends React.Component<Props, {}> {
   private static readonly TITLE = 'Arbeitszeit';
 
   render() {
-    const titleIcon = <ActionSchedule style={iconStyles} color={grey} />;
+    const titleIcon = (
+      <ActionSchedule style={iconStyles} color={Color.TEXT_INPUT} />
+    );
     return (
       <ContentCard
         title={WorkTimeCard.TITLE}
-        titleColor={grey}
+        titleColor={Color.TEXT_INPUT}
         titleIcon={titleIcon}
-        backgroundColor={lightGrey}
+        backgroundColor={Color.BACKGROUND_INPUT}
       >
         <StyledWrapper>
           <TimePicker

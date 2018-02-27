@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { ActionUpdate } from 'material-ui/svg-icons';
-import {
-  grey700 as grey,
-  blue50 as lightBlue
-} from 'material-ui/styles/colors';
+import { Color } from '../../constants';
 import { ContentCard } from '../content-card';
 import { TimeResultField } from './subcomponents';
 import styled from 'styled-components';
@@ -24,13 +21,13 @@ export class TargetTimeCard extends React.Component<TargetTime, {}> {
 
   render() {
     const { normal, max } = this.props.targetTime;
-    const titleIcon = <ActionUpdate style={iconStyles} color={grey} />;
+    const titleIcon = <ActionUpdate style={iconStyles} color={Color.TEXT} />;
     return (
       <ContentCard
         title={TargetTimeCard.TITLE}
-        titleColor={grey}
+        titleColor={Color.TEXT}
         titleIcon={titleIcon}
-        backgroundColor={lightBlue}
+        backgroundColor={Color.BACKGROUND}
       >
         <StyledWrapper>
           <TimeResultField label="7,6h" value={normal} />
