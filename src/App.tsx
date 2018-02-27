@@ -11,7 +11,8 @@ import {
   Title,
   WorkTimeCard,
   TargetTimeCard,
-  ActualTimeCard
+  ActualTimeCard,
+  BreakTimeCard
 } from './components';
 import { AppData, ActionType } from './types';
 
@@ -48,6 +49,7 @@ export class App extends React.Component<Props, {}> {
             onArrive={this.props.onUpdateArrivalTime}
             onLeave={this.props.onUpdateLeaveTime}
           />
+          <BreakTimeCard />
           <TargetTimeCard targetTime={this.props.targetTime} />
           <ActualTimeCard actualTime={this.props.actualTime} />
         </StyledContentWrapper>

@@ -15,13 +15,21 @@ interface Props {
   titleColor?: string;
   titleIcon?: {};
   backgroundColor?: string;
+  expandIcon?: {};
 }
 
 export class ContentCard extends React.Component<Props, {}> {
   render() {
-    const { title, titleColor, titleIcon, backgroundColor } = this.props;
+    const {
+      title,
+      titleColor,
+      titleIcon,
+      backgroundColor,
+      expandIcon
+    } = this.props;
     const style = {
-      backgroundColor: backgroundColor
+      backgroundColor: backgroundColor,
+      color: titleColor
     };
     return (
       <StyledCard containerStyle={style}>
@@ -30,6 +38,10 @@ export class ContentCard extends React.Component<Props, {}> {
           titleStyle={titleStyle}
           titleColor={titleColor}
           avatar={titleIcon}
+          showExpandableButton={expandIcon !== undefined}
+          openIcon={expandIcon}
+          closeIcon={expandIcon}
+          iconStyle={style}
         />
         <CardText>{this.props.children}</CardText>
       </StyledCard>
