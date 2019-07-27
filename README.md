@@ -1,5 +1,5 @@
 # Arbeitszeit Rechner
-[![Build Status](https://travis-ci.org/s3koenig/arbeitszeit-rechner.svg?branch=master)](https://travis-ci.org/s3koenig/arbeitszeit-rechner)
+
 [![license](https://img.shields.io/github/license/s3koenig/arbeitszeit-rechner.svg)]()
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -42,8 +42,8 @@ my-app/
 
 For the project to build, **these files must exist with exact filenames**:
 
-* `public/index.html` is the page template;
-* `src/index.tsx` is the JavaScript/TypeScript entry point.
+- `public/index.html` is the page template;
+- `src/index.tsx` is the JavaScript/TypeScript entry point.
 
 You can delete or rename the other files.
 
@@ -106,10 +106,13 @@ Use the including Dockerfile for running these app inside of a Docker container.
 ### Building your image
 
 Go to the directory that has your `Dockerfile` and run the following command to build the Docker image. The `-t` flag lets you tag your image so it's easier to find later using the `docker images` command:
+
 ```bash
 $ docker build -t <your username>/arbeitszeit-rechner .
 ```
+
 Your image will now be listed by Docker:
+
 ```bash
 $ docker images
 
@@ -121,10 +124,13 @@ node                                   boron      539c0211cd76    3 weeks ago
 ### Run the image
 
 Running your image with `-d` runs the container in detached mode, leaving the container running in the background. The `-p` flag redirects a public port to a private port inside the container. Run the image you previously built:
+
 ```bash
 $ docker run -p 9000:9000 -d <your username>/arbeitszeit-rechner
 ```
+
 Print the output of your app:
+
 ```bash
 # Get container ID
 $ docker ps
@@ -135,7 +141,9 @@ $ docker logs <container id>
 # Example
 Running on http://localhost:9000
 ```
+
 If you need to go inside the container you can use the `exec` command:
+
 ```bash
 # Enter the container
 $ docker exec -it <container id> /bin/bash
