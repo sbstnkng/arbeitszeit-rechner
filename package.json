@@ -8,7 +8,7 @@
     "moment": "^2.19.3",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "react-redux": "^5.0.6",
+    "react-redux": "^7.1.1",
     "react-scripts-ts": "2.8.0",
     "react-tap-event-plugin": "^3.0.2",
     "redux": "^3.7.2",
