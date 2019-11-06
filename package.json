@@ -12,7 +12,7 @@
     "react-scripts-ts": "2.8.0",
     "react-tap-event-plugin": "^3.0.2",
     "redux": "^3.7.2",
-    "sanitize.css": "^5.0.0"
+    "sanitize.css": "^11.0.0"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json,css}": [
